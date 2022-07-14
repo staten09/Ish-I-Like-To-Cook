@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/recipeapp.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+</head>
+
+<body class="container  body-content">
+
+<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a th:href="@{/}" class="navbar-brand">Cookbooks and Stuff</a>
+        </div>
+    </div>
+</div>
+<h1 th:text="${recipe.name}">Default Title</h1>
+
+<div>
+    <p th:if="${recipe.servings > 0}" th:text="${'Servings: ' + recipe.servings}"></p>
+</div>
+
+<div>
+    <p th:if="${recipe.prepTime > 0}" th:text="${'Prep Time: ' + recipe.prepTime + ' minutes'}"></p>
+</div>
+
+<div>
+    <p th:if="${recipe.cookTime > 0}" th:text="${'Cook Time: ' + recipe.cookTime + ' minutes'}"></p>
+</div>
+
+<div>
+    <p th:if="${recipe.ovenTemp > 0}" th:text="${'Oven Temp: ' + recipe.ovenTemp}"></p>
+</div>
+
+<div>
+    <p th:if="${recipe.directions != ''}" th:text="${'Directions: ' + recipe.directions}"></p>
+</div>
+
+<div>
+    <p th:if="${recipe.notes != ''}" th:text="${'Notes: ' + recipe.notes}"></p>
+</div>
+<br>
+
+<a th:href="@{'/recipes/add'}">
+    <input type="submit" value="Add A New Recipe"/>
+</a>
+<br>
+<br>
+<a th:fragment="home-button" th:href="@{/}">
+    <input type="submit" value="Your Recipe Book"/>
+</a>
+
+</body>
+</html>
